@@ -3,7 +3,8 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import ModelsList from './ModelsList';
 import CreateModel from './NewModel';
-
+import ManufacturerList from './ListManufacturers';
+import ManufacturerForm from './ManufacturerForm';
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
             <Route path='new/' element ={<CreateModel />}/>
           </Route>
           {/* End Models URLS */}
-        </Routes>
+          <Route path="manufacturers" element={<ManufacturerList />} />
+          <Route path="manufacturers/create" element={<ManufacturerForm />} />
+         </Routes>
       </div>
     </BrowserRouter>
   );
