@@ -44,4 +44,4 @@ function ManufacturerList(props) {
     )
 }
 
-export default ManufacturerList
+export default ManufacturerList;
