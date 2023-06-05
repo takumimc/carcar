@@ -22,7 +22,7 @@ function ManufacturerList(props) {
     }, []);
 
     return (
-        <div className="container">
+        <div className="container mt-4">
             <h1>Manufacturers</h1>
             <table className="table table-striped">
                 <thead>

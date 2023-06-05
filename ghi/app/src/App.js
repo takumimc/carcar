@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
 import ManufacturerList from './ListManufacturers';
+import ManufacturerForm from './ManufacturerForm';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="manufacturers" element={<ManufacturerList />} />
-        </Routes>
+          <Route path="manufacturers/create" element={<ManufacturerForm />} />
+         </Routes>
       </div>
     </BrowserRouter>
   );
