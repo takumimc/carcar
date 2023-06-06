@@ -29,3 +29,8 @@ def api_salesperson(request):
             encoder=SalespersonEncoder,
             safe=False,
         )
+
+@require_http_methods(["DELETE"])
+def api_salesperson_delete(request, pk):
+    count, _ = Salesperson.objects.filter(id=pk).delete()
+    return JsonResponse({"deleted": count > 0})
