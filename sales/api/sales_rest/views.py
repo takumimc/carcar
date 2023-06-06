@@ -1,26 +1,31 @@
 from django.shortcuts import render
-from common.json import ModelEncoder
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+import json
 
-from .models import Salesperson, Customer, AutomobileVO, Sale
+from .encoders import (
+    AutomobileVOEncoder,
+    SalespersonEncoder,
+    CustomerEncoder,
+    SaleEncoder,
+)
+
+from .models import AutomobileVO, Salesperson, Customer, Sale
 
 # Create your views here.
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = ["import_href", "vin", "sold"]
-
-class SalespersonEncoder(ModelEncoder):
-    model = Salesperson
-    properties = ["first_name", "last_name", "employee_id"]
-
-class CustomerEncoder(ModelEncoder):
-    model = Customer
-    properties = ["first_name", "last_name", "address", "phone_number"]
-
-class SaleEncoder(ModelEncoder):
-    model = Sale
-    properties = ["automobile", "salesperson", "customer", "price"]
-    encoder = {
-        "automobile": AutomobileVO(),
-        "salesperson": SalespersonEncoder(),
-        "customer": CustomerEncoder(),
-    }
+@require_http_methods(["GET", "POST"])
+def api_salesperson(request):
+    if request.method == "GET":
+        salespersons = Salesperson.objects.all()
+        return JsonResponse(
+            {"salespersons": salespersons},
+            encoder=SalespersonEncoder,
+        )
+    else:
+        content = json.loads(request.body)
+        salesperson = Salesperson.objects.create(**content)
+        return JsonResponse(
+            salesperson,
+            encoder=SalespersonEncoder,
+            safe=False,
+        )
