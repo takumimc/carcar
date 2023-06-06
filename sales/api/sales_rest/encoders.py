@@ -1,9 +1,7 @@
-from django.shortcuts import render
 from common.json import ModelEncoder
 
 from .models import Salesperson, Customer, AutomobileVO, Sale
 
-# Create your views here.
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = ["import_href", "vin", "sold"]
