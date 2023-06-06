@@ -16,9 +16,9 @@ from .models import AutomobileVO, Salesperson, Customer, Sale
 @require_http_methods(["GET", "POST"])
 def api_salesperson(request):
     if request.method == "GET":
-        salespersons = Salesperson.objects.all()
+        salespeople = Salesperson.objects.all()
         return JsonResponse(
-            {"salespersons": salespersons},
+            {"salespeople": salespeople},
             encoder=SalespersonEncoder,
         )
     else:
