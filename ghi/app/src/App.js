@@ -13,6 +13,7 @@ import SalespersonForm from './SalespersonForm';
 import SalesPeopleList from './ListSalespeople';
 import CustomerForm from './CustomerForm';
 import CustomersList from './ListCustomers';
+import SalesForm from './SalesForm';
 
 function App() {
   return (
@@ -58,6 +59,12 @@ function App() {
             <Route path="new" element={<CustomerForm />} />
           </Route>
           {/* End Customer URLS */}
+
+          {/* Start Sales URLS */}
+          <Route path="/sales/">
+            <Route path="new" element={<SalesForm />} />
+          </Route>
+          {/* End Sales URLS */}
          </Routes>
       </div>
     </BrowserRouter>
