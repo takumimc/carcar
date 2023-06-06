@@ -3,7 +3,6 @@ import React, { useEffect, useState} from "react";
 function ModelsList() {
 
     const [models, setModels] = useState([])
-    const [model, setModel] = useState('')
 
     const loadModels = async () => {
         const modelsURL = 'http://localhost:8100/api/models/'
