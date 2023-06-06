@@ -59,11 +59,13 @@ def list_appointments(request):
             return JsonResponse({'message': 'Technician does not exist'})
 
         body['technician']= technician
+
         try:
             vip_check = AutomobileVO.objects.get(vin=body['vin'])
             body['vip'] = True
         except AutomobileVO.DoesNotExist:
             body['vip'] = False
+
         try:
             appointment = Appointment.objects.create(**body)
         except IntegrityError as e:

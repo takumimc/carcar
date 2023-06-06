@@ -7,6 +7,8 @@ import ManufacturerList from './ListManufacturers';
 import ManufacturerForm from './ManufacturerForm';
 import AutomobileList from './ListAutomobiles';
 import CreateAutomobile from './CreateAutomobile';
+import ListTechnicians from './ListTechnician';
+import CreateTechnician from './TechnicianForm';
 
 function App() {
   return (
@@ -21,6 +23,19 @@ function App() {
             <Route path='new/' element ={<CreateModel />}/>
           </Route>
           {/* End Models URLS */}
+
+          {/* Start Technician URLS */}
+          <Route path='/technicians/'>
+            <Route path ='' element={<ListTechnicians />}/>
+            <Route path ='new' element={<CreateTechnician />}/>
+          </Route>
+          {/* End Technician URLS */}
+
+          {/* Start Appointment URLS */}
+          <Route path='/appointments/'>
+            {/* Appointments TBA */}
+          </Route>
+          {/* End Appointment URLS */}
           <Route path="manufacturers" element={<ManufacturerList />} />
           <Route path="manufacturers/create" element={<ManufacturerForm />} />
           <Route path="automobiles" element={<AutomobileList />} />
