@@ -20,6 +20,12 @@ function CreateTechnician() {
         setID(value)
     }
 
+    const [err, setErr] = useState('')
+    function handleErr(e){
+        const value = e.target.value
+        setErr(value)
+    }
+
     async function handleSubmit(e){
         e.preventDefault()
 
@@ -39,12 +45,17 @@ function CreateTechnician() {
         const response = await fetch(url,fetchConfig)
         if(!response.ok){
             const error = await response.json()
-            console.error(error['message'])
+            // console.error(error['message'])
+            setErr(error['message'])
+            const errorTag = document.getElementById('err-not')
+            errorTag.classList.remove('d-none')
         } else {
             // const newTech = await response.json()
             setFirst('')
             setLast('')
             setID('')
+            const errorTag = document.getElementById('err-not')
+            errorTag.classList.add('d-none')
         }
 }
     return (
@@ -65,7 +76,10 @@ function CreateTechnician() {
                     <label htmlFor='id'>Employee ID:</label>
                     <input value={id} onChange={handleID} placeholder='Employee ID' required type='text' name='id' id='id' className='form-control'></input>
                 </div>
-                <div className='mt-4'><button className='btn btn-dark'>Create</button></div>
+                <div className='mt-4'>
+                <div className='alert alert-warning d-none' id='err-not'>{err}</div>
+                    <button className='btn btn-dark'>Create</button>
+                </div>
             </form>
         </div>
         </div>
