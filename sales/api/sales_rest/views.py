@@ -99,10 +99,14 @@ def api_sales(request):
                 status=400,
             )
 
-
         sale = Sale.objects.create(**content)
         return JsonResponse(
             {"sales": sale},
             encoder=SaleEncoder,
             safe=False,
         )
+
+@require_http_methods(["DELETE"])
+def api_sales_delete(request, pk):
+    count, _ = Sale.objects.filter(id=pk).delete()
+    return JsonResponse({"deleted": count > 0})
