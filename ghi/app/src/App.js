@@ -12,6 +12,7 @@ import CreateTechnician from './TechnicianForm';
 import SalespersonForm from './SalespersonForm';
 import SalesPeopleList from './ListSalespeople';
 import CustomerForm from './CustomerForm';
+import CustomersList from './ListCustomers';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
 
           {/* Start Customer URLS */}
           <Route path="/customers/">
+            <Route path="" element={<CustomersList />} />
             <Route path="new" element={<CustomerForm />} />
           </Route>
           {/* End Customer URLS */}
