@@ -13,7 +13,7 @@ class TechnicianEncoder(ModelEncoder):
 
 class AppointmentEncoder(ModelEncoder):
     model= Appointment
-    properties =['id','date_time','reason','status','vin','customer','technician']
+    properties =['id', 'vip', 'date_time','reason','status','vin','customer','technician']
     encoders = {"technician": TechnicianEncoder()}
 
 
@@ -59,7 +59,11 @@ def list_appointments(request):
             return JsonResponse({'message': 'Technician does not exist'})
 
         body['technician']= technician
-
+        try:
+            vip_check = AutomobileVO.objects.get(vin=body['vin'])
+            body['vip'] = True
+        except AutomobileVO.DoesNotExist:
+            body['vip'] = False
         try:
             appointment = Appointment.objects.create(**body)
         except IntegrityError as e:
