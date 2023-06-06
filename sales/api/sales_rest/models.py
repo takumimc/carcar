@@ -13,8 +13,13 @@ class Customer(models.Model):
     phone_number = models.CharField(max_length=15)
 
 class AutomobileVO(models.Model):
-    vin = models.CharField(max_length=17, unique=True)
-    sold = models.BooleanField(default=False)
+    import_href = models.CharField(max_length=200)
+    vin = models.CharField(max_length=17)
+    sold = models.BooleanField()
+
+    def __str__(self):
+        return self.vin
+
 
 class Sale(models.Model):
     automobile = models.ForeignKey(
