@@ -8,7 +8,8 @@ function ListTechnicians() {
         const url = 'http://localhost:8080/api/technicians/'
         const response = await fetch(url)
         if (!response.ok){
-            console.error('Error getting technicians')
+            const err = await response.json()
+            console.error(err['message'])
         } else {
             const data = await response.json()
             // console.log(data)

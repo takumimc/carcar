@@ -38,7 +38,8 @@ function CreateTechnician() {
         }
         const response = await fetch(url,fetchConfig)
         if(!response.ok){
-            console.error('Error creating new technician. Try another employee ID')
+            const error = await response.json()
+            console.error(error['message'])
         } else {
             // const newTech = await response.json()
             setFirst('')
