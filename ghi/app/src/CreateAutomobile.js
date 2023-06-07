@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateAutomobile(){
+
+    const nav = useNavigate()
+
     const [ color, setColor] = useState('')
     function handleColor(e) {
         const value = e.target.value
@@ -67,6 +71,7 @@ function CreateAutomobile(){
             setYear('')
             setVIN('')
             setModel('')
+            nav('/automobiles')
         }
     }
 

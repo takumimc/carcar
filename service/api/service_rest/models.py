@@ -14,7 +14,7 @@ class Appointment(models.Model):
     date_time = models.DateTimeField()
     reason = models.TextField()
     status = models.CharField(max_length=100, default='Scheduled')
-    vin = models.CharField(max_length=100, unique=True)
+    vin = models.CharField(max_length=100)
     vip = models.BooleanField(default=False)
     customer = models.CharField(max_length=100)
     technician = models.ForeignKey(

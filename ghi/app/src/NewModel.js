@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 
 function CreateModel() {
-
+    const nav = useNavigate()
     const [manus, setManus] = useState([])
 
     const [manu, setManu] = useState('')
@@ -33,7 +34,7 @@ function CreateModel() {
         }
     }
 
-    async function handleSubmit(e){
+    async function HandleSubmit(e){
         e.preventDefault()
 
         const data={}
@@ -60,6 +61,7 @@ function CreateModel() {
             setName('')
             setPicture('')
             setManu('')
+            nav('/models/')
         }
     }
 
@@ -69,7 +71,7 @@ function CreateModel() {
         <div className='offset-3 col-6'>
         <div className='shadow p-4 mt-4'>
             <h1>Create a vehicle model</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={HandleSubmit}>
                 <div>
                     <label htmlFor='name'>Name:</label>
                     <input value={name} onChange={handleName} placeholder='Model name' required type='text' name='name' id='name' className='form-control'></input>
