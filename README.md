@@ -39,7 +39,8 @@ The various API endpoints and models are listed below:
 ### Technician Model
 This model contains data for the technician that is assigned to an appointment.
 The various endpoints can be accessed according to this table
-|Action|Method|URL
+|Action|Method|URL|
+| ----------- | ----------- | ----------- |
 |List Technicians|GET|http://localhost:8080/api/technicians/|
 |Create Technician|POST|http://localhost:8080/api/technicians/|
 |Delete a Technician|DELETE|http://localhost:8080/api/technicians/:id|
