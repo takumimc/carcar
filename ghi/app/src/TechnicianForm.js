@@ -1,7 +1,10 @@
 import React, { useState} from "react";
-
+import { useNavigate } from "react-router-dom";
 
 function CreateTechnician() {
+
+    const nav=useNavigate()
+
     const [first, setFirst] = useState('')
     function handleFirst(e){
         const value = e.target.value
@@ -51,6 +54,7 @@ function CreateTechnician() {
             setFirst('')
             setLast('')
             setID('')
+            nav('/technicians/')
             const errorTag = document.getElementById('err-not')
             errorTag.classList.add('d-none')
         }

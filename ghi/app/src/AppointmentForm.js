@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function CreateAppointment(){
+
+    const nav = useNavigate()
 
     const [err, setErr] = useState('')
 
@@ -75,7 +79,7 @@ function CreateAppointment(){
             setCustomer('')
             setTech('')
             setDatetime('')
-
+            nav('/appointments/')
             const errTag = document.getElementById('err-not')
             errTag.classList.add('d-none')
         }

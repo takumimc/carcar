@@ -66,11 +66,9 @@ def list_appointments(request):
         except AutomobileVO.DoesNotExist:
             body['vip'] = False
 
-        try:
-            appointment = Appointment.objects.create(**body)
-        except IntegrityError as e:
-            if 'unique constraint' in e.args[0]:
-                return JsonResponse({"message": "VIN already used. Choose another VIN."}, status=400)
+
+        appointment = Appointment.objects.create(**body)
+
         return JsonResponse(appointment,encoder=AppointmentEncoder,safe=False)
 
 
