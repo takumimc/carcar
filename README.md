@@ -725,5 +725,6 @@ JSON body to send data:
 "deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
 
 ### AutomobileVO Model
+This model creates a value object from the data being polled from the Inventory microservice using a poller that polls data from that Inventory every 60 seconds. The model contains two fields, VIN, sold information, and import_href. This data is needed when we are creating sales in our next model.
 
 ### Sale Model
