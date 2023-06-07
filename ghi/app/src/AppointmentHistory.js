@@ -35,37 +35,6 @@ function HistoryAppointments(){
         }
     }
 
-    const searchAppointments = (search) => async() =>{
-        const url = 'http://localhost:8080/api/appointments/'
-        const response = await fetch(url)
-        if (!response.ok){
-            const error = await response.json()
-            setErr(error['message'])
-            const errTag = document.getElementById('err-not')
-            errTag.classList.remove('d-none')
-
-        } else {
-            const data = await response.json()
-            // console.log(data)
-            for (let item of data.appointments){
-                if(item.vin !== search){
-                    data.appointments.pop(item)
-                } else {
-                const datetime = new Date(item.date_time)
-                const date = datetime.toLocaleDateString(undefined,{month:'long', day:'numeric',year:'numeric'})
-                const time = datetime.toLocaleTimeString('en-US')
-                // console.log(time)
-                // console.log(datetime)
-                item['time'] = time
-                item['date'] = date
-                }
-            }
-            console.log(data.appointments)
-            setAppointments(data['appointments'])
-            // console.log(data.appointments)
-        }
-    }
-
     async function submitSearch(e) {
         e.preventDefault()
         const url = 'http://localhost:8080/api/appointments/'
@@ -94,7 +63,11 @@ function HistoryAppointments(){
 
             }
             // console.log(search_data)
+            if(search !== ''){
             setAppointments(search_data)
+            } else {
+                loadAppointments()
+            }
             // console.log(data.appointments)
         }
 
