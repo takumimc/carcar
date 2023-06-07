@@ -45,6 +45,7 @@ The various endpoints can be accessed according to this table
 |Create Technician|POST|http://localhost:8080/api/technicians/|
 |Delete a Technician|DELETE|http://localhost:8080/api/technicians/id|
 
+
 The Create Technician action takes a POST request with a JSON body in this format:
 ```
 {
@@ -165,8 +166,11 @@ The Create an Appointment takes a POST request with a JSON body structured as:
 }
 ```
 Some things to note:
-date_time takes an ISO formatted datetime string
-technician takes a technician ID number to retrive data from created technicians
+
+date_time takes an ISO formatted datetime string.
+
+technician takes a technician ID number to retrive data from created technicians.
+
 
 Once successfull it should return a preview of what the created appointment looks like:
 ```
@@ -187,9 +191,13 @@ Once successfull it should return a preview of what the created appointment look
 }
 ```
 Some things to note:
+
 A couple fields are automatically generated.
+
 Upon creation "status" is set to "Scheduled". This can be changed with "set appointment" actions.
+
 Upon creation a "vip" value is generated. If the vin provided matches a vin from one of our AutomobileVO objects then "vip" is set to true. Otherwise it is false
+
 
 The Delete an Appointment takes a DELETE request with the id taken from the url of the corresponding appointment. Returns JSON data.
 ```
@@ -198,6 +206,7 @@ The Delete an Appointment takes a DELETE request with the id taken from the url 
 }
 ```
 "deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
+
 
 The Set appointment status actions will either set the current status of an appointment to either "Finished" or "Canceled" depending on the URL. Default status is "Scheduled" upon creation.
 This action takes a PUT request to a URL that specifys both the id number of the appointment and whether it wil "finish" or "cancel" an appointment.
