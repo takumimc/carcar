@@ -237,7 +237,7 @@ Returns a preview of the updated JSON:
 The various endpoints can be accessed according to this table
 |Action|Method|URL|
 | ----------- | ----------- | ----------- |
-|List Automobiles|GET|http://localhost:8100/api/automobiles//|
+|List Automobiles|GET|http://localhost:8100/api/automobiles/|
 |Create Automobile|POST|http://localhost:8100/api/automobiles/|
 |Delete an Automobile|DELETE|http://localhost:8100/api/automobiles/vin/|
 |Update an Automobile|PUT|http://localhost:8100/api/automobiles/vin/|
