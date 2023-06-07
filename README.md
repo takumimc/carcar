@@ -28,6 +28,125 @@ docker-compose up
 
 ## Inventory microservice
 
+This portion of the app manages the manufacturers,automobiles, and vehicle models in our inventory.
+
+### Vehicle Model
+The various endpoints can be accessed according to this table
+|Action|Method|URL|
+| ----------- | ----------- | ----------- |
+|List Vehicle models|GET|http://localhost:8100/api/models/|
+|Create Vehicle model|POST|	http://localhost:8100/api/models/|
+|Delete a Vehicle model|DELETE|http://localhost:8100/api/models/:id/|
+|Update a Vehicle model|PUT|http://localhost:8100/api/models/:id/|
+|Get a Vehicle model|POST|http://localhost:8100/api/models/:id/|
+
+List Vehicle action takes a GET request with no input and returns JSON data for all the vehicles formatted this way:
+```
+{
+	"models": [
+		{
+			"href": "/api/models/2/",
+			"id": 2,
+			"name": "Sebring",
+			"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+			"manufacturer": {
+				"href": "/api/manufacturers/1/",
+				"id": 1,
+				"name": "Test manfu"
+			}
+		},
+        {
+			"href": "/api/models/8/",
+			"id": 8,
+			"name": "last test",
+			"picture_url": "https://mks.io/meat-taco",
+			"manufacturer": {
+				"href": "/api/manufacturers/3/",
+				"id": 3,
+				"name": "adsfasfdsadf"
+			}
+		}
+	]
+}
+```
+
+Create a Vehicle takes a POST request with JSON data formatted like so:
+```
+{
+  "name": "Test 2",
+  "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+  "manufacturer_id": 1
+}
+```
+Some things to note:
+- "manufacturer_id" takes an integer input that corresponds to the desired manufacturer object
+
+Upon successful creation a preview JSON will be returned:
+```
+{
+	"href": "/api/models/4/",
+	"id": 4,
+	"name": "Test 2",
+	"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+	"manufacturer": {
+		"href": "/api/manufacturers/1/",
+		"id": 1,
+		"name": "Test manfu"
+	}
+}
+```
+
+Delete a Vehicle takes a DELETE request with the corresponding vehicle id in the url. Returns JSON formatted:
+```
+{
+	"id": null,
+	"name": "Sebring",
+	"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+	"manufacturer": {
+		"href": "/api/manufacturers/1/",
+		"id": 1,
+		"name": "Test manfu"
+	}
+}
+```
+
+Update vehicle takes a PUT request with the corresponding vehicle id in the url and JSON data formatted:
+```
+{
+  "name": "Sebring",
+  "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg"
+}
+```
+Returns a preview of the updated JSON:
+```
+{
+	"href": "/api/models/1/",
+	"id": 1,
+	"name": "Sebring",
+	"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+	"manufacturer": {
+		"href": "/api/manufacturers/1/",
+		"id": 1,
+		"name": "Test manfu"
+	}
+}
+```
+
+Get a vehicle takes a GET request with the corresponding vehicle id in the url and returns JSON for the single vehicle that matches the ID:
+```
+{
+	"href": "/api/models/1/",
+	"id": 1,
+	"name": "Test vehicle",
+	"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+	"manufacturer": {
+		"href": "/api/manufacturers/1/",
+		"id": 1,
+		"name": "Test manfu"
+	}
+}
+```
+
 
 ## Service microservice
 
