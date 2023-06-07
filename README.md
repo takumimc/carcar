@@ -716,7 +716,7 @@ JSON body to send data:
 }
 ```
 
-- The DELETE customer request requires the unique id assigned to the customer. If you take the DELETE request url http://localhost:8090/api/salespeople/id/ and replace id with the id of the customer you want deleted and send the request, there will be a JSON response that indicates a boolean value whether or not the DELETE request was successful. The response will be shown like this:
+- The DELETE customer request requires the unique id assigned to the customer. If you take the DELETE request url http://localhost:8090/api/customers/id/ and replace id with the id of the customer you want deleted and send the request, there will be a JSON response that indicates a boolean value whether or not the DELETE request was successful. The response will be shown like this:
 ```
 {
 	"deleted": true
@@ -727,4 +727,82 @@ JSON body to send data:
 ### AutomobileVO Model
 This model creates a value object from the data being polled from the Inventory microservice using a poller that polls data from that Inventory every 60 seconds. The model contains two fields, VIN, sold information, and import_href. This data is needed when we are creating sales in our next model.
 
+The VIN identifies the specific automobile and the sold is a boolean value that tells us if that automobile has been sold or not. We utilize this data in the frontend to filter out the specific automobiles that have not been sold so when you record a new sale, you only can select the automobiles that have not been sold yet.
+
 ### Sale Model
+This model creates and records data for sales by assigning an automobile, a salesperson, a customer, and a price.
+
+The various endpoints can be accessed through Insomnia and/or your browser:
+
+| Action | Method | URL
+| ----------- | ----------- | -----------
+| List sales | GET | http://localhost:8090/api/sales/
+| Create sales | POST | http://localhost:8090/api/sales/
+| Delete a specific sale | DELETE | http://localhost:8090/api/sales/id/
+
+JSON body to send data:
+
+- Create a sale takes a POST request with JSON body in this format:
+	- The value for automobile, salesperson and customer require their unique id to assign
+	- The price must be an integer and not a float
+```
+{
+	"automobile": 1,
+	"salesperson": 1,
+	"customer": 1,
+	"price": 40000
+}
+```
+- If the value of automobile, salesperson, or customer does not exist, a JSON response will display:
+```
+{
+	"message": "No automobile exists"
+}
+```
+{
+	"message": "No salesperson exists"
+}
+```
+{
+	"message": "No customer exists"
+}
+```
+
+- Listing sales will require a GET request but does not need JSON input. If the GET request is received, a list of all the created sales alongside detailed information of the automobile, salesperson, and customer. It will appear in the this following format:
+```
+{
+	"sales": [
+		{
+			"automobile": {
+				"import_href": "/api/automobiles/7146791672/",
+				"vin": "7146791672",
+				"sold": false,
+				"id": 1
+			},
+			"salesperson": {
+				"first_name": "Kevin",
+				"last_name": "Nguyen",
+				"employee_id": 71467916,
+				"id": 1
+			},
+			"customer": {
+				"first_name": "Kevin",
+				"last_name": "Nguyen",
+				"address": "488 Fake Address St, Fountain Valley, CA, 92647",
+				"phone_number": "7146791672",
+				"id": 1
+			},
+			"price": 40000,
+			"id": 2
+		}
+	]
+}
+```
+
+- The DELETE sales request requires the unique id assigned to the sale. If you take the DELETE request url http://localhost:8090/api/sales/id/ and replace id with the id of the employee you want deleted and send the request, there will be a JSON response that indicates a boolean value whether or not the DELETE request was successful. The response will be shown like this:
+```
+{
+	"deleted": true
+}
+```
+"deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
