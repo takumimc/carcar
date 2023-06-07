@@ -587,3 +587,82 @@ This microservice is designed to create and manage sales through creating and di
 To access the inventory of automobiles, the service polls data from the Inventory microservice using a poller to grab automobiles from the inventory and create an AutomobileVO within our microservice.
 
 The various API endpoints and models are listed below:
+
+### Salesperson Model
+This model creates data for a salesperson that has their first name, last name, and a unique employee ID of all numbers.
+
+The various endpoints can be accessed through Insomnia and/or your browser:
+
+| Action | Method | URL
+| ----------- | ----------- | -----------
+| List salespeople | GET | 	http://localhost:8090/api/salespeople/
+| Create salesperson | POST | http://localhost:8090/api/salespeople/
+| Delete a specific salesperson | DELETE | 	http://localhost:8090/api/salespeople/id/
+
+JSON body to send data:
+
+- Create a salesperson takes a POST request with JSON body in this format:
+	- All fields are required for a proper POST request
+	- You cannot make an employee with the same ID or error will appear
+```
+{
+	"first_name": "Tom",
+	"last_name": "Brady",
+	"employee_id": 12
+}
+```
+- Upon a successful request, you should receive JSON data similar to shown below:
+```
+{
+	"first_name": "Tom",
+	"last_name": "Brady",
+	"employee_id": 12,
+	"id": (unique_id)
+}
+```
+
+- Listing salespeople will require a GET request but does not need JSON input. If the GET request is received, a list of all the created salespeople will appear in the format shown below:
+```
+{
+	"salespeople": [
+		{
+			"first_name": "Kevin",
+			"last_name": "Nguyen",
+			"employee_id": 71467916,
+			"id": 1
+		},
+		{
+			"first_name": "Kevin",
+			"last_name": "d",
+			"employee_id": 11,
+			"id": 2
+		},
+		{
+			"first_name": "Kevin",
+			"last_name": "Nguyen",
+			"employee_id": 4,
+			"id": 3
+		},
+		{
+			"first_name": "Tom",
+			"last_name": "Brady",
+			"employee_id": 12,
+			"id": 5
+		}
+	]
+}
+```
+
+- The DELETE salesperson request requires the unique id(not the employee_id) assigned to the salesperson. If you take the DELETE request url http://localhost:8090/api/salespeople/id/ and replace id with the id of the employee you want deleted and send the request, there will be a JSON response that indicates a boolean value whether or not the DELETE request was successful. The response will be shown like this:
+```
+{
+	"deleted": true
+}
+```
+"deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
+
+### Customer Model
+
+### AutomobileVO Model
+
+### Sale Model
