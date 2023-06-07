@@ -48,7 +48,6 @@ function SalesForm(props) {
         }
         const response = await fetch(saleUrl, fetchConfig);
         if (response.ok) {
-            const newSale = await response.json();
             setAutomobile('');
             setCustomer('');
             setSalesperson('');
@@ -102,7 +101,7 @@ function SalesForm(props) {
                         <div className="mb-3">
                             <select value={automobile} onChange={handleAutomobileChange} required name="automobile" id="automobile" className="form-select">
                                 <option value="">Choose an automobile VIN</option>
-                                {automobiles.filter(autos => autos.sold == false).map(auto => {
+                                {automobiles.filter(autos => autos.sold === false).map(auto => {
                                     return (
                                         <option key={auto.id} value={auto.id}>
                                             {auto.vin}
