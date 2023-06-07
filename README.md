@@ -40,7 +40,7 @@ The various endpoints can be accessed according to this table
 |Update a Manufacturer|PUT|http://localhost:8100/api/manufacturers/id/|
 |Get a Manufacturer|POST|http://localhost:8100/api/manufacturers/id/|
 
-The List Manufacturer takes a GET request and returns JSON data for all the created manufacturers:
+- The List Manufacturer takes a GET request and returns JSON data for all the created manufacturers:
 ```
 {
 	"manufacturers": [
@@ -63,7 +63,7 @@ The List Manufacturer takes a GET request and returns JSON data for all the crea
 }
 ```
 
-The Create Manufacturer action takes a POST request with JSON body like so:
+- The Create Manufacturer action takes a POST request with JSON body like so:
 ```
 {
   "name": "Chrysler"
@@ -78,7 +78,7 @@ Upon creation it returns a preview of the JSON data:
 }
 ```
 
-The Delete Manufacturer action takes a DELETE request and id from the URL to delete the matching manufacturer. Returns JSON data upon deletion:
+- The Delete Manufacturer action takes a DELETE request and id from the URL to delete the matching manufacturer. Returns JSON data upon deletion:
 ```
 {
 	"id": null,
@@ -86,7 +86,7 @@ The Delete Manufacturer action takes a DELETE request and id from the URL to del
 }
 ```
 
-The Update a Manufacturer action takes a PUT request and id from the URL as well as JSON body data to update the information of the matching manufacturer:
+- The Update a Manufacturer action takes a PUT request and id from the URL as well as JSON body data to update the information of the matching manufacturer:
 ```
 {
   "name": "Christler"
@@ -101,7 +101,7 @@ Returns updated JSON data preview:
 }
 ```
 
-The Get a Manufacturer action  takes a POST request and id from the URL to get the JSON data for the matching manufacturer:
+- The Get a Manufacturer action  takes a POST request and id from the URL to get the JSON data for the matching manufacturer:
 ```
 {
 	"href": "/api/manufacturers/1/",
@@ -121,7 +121,7 @@ The various endpoints can be accessed according to this table
 |Update a Vehicle model|PUT|http://localhost:8100/api/models/id/|
 |Get a Vehicle model|POST|http://localhost:8100/api/models/id/|
 
-List Vehicle action takes a GET request with no input and returns JSON data for all the vehicles formatted this way:
+- List Vehicle action takes a GET request with no input and returns JSON data for all the vehicles formatted this way:
 ```
 {
 	"models": [
@@ -151,7 +151,7 @@ List Vehicle action takes a GET request with no input and returns JSON data for 
 }
 ```
 
-Create a Vehicle takes a POST request with JSON data formatted like so:
+- Create a Vehicle takes a POST request with JSON data formatted like so:
 ```
 {
   "name": "Test 2",
@@ -160,7 +160,7 @@ Create a Vehicle takes a POST request with JSON data formatted like so:
 }
 ```
 Some things to note:
-- "manufacturer_id" takes an integer input that corresponds to the desired manufacturer object
+1. "manufacturer_id" takes an integer input that corresponds to the desired manufacturer object
 
 Upon successful creation a preview JSON will be returned:
 ```
@@ -177,7 +177,7 @@ Upon successful creation a preview JSON will be returned:
 }
 ```
 
-Delete a Vehicle takes a DELETE request with the corresponding vehicle id in the url. Returns JSON formatted:
+- Delete a Vehicle takes a DELETE request with the corresponding vehicle id in the url. Returns JSON formatted:
 ```
 {
 	"id": null,
@@ -191,7 +191,7 @@ Delete a Vehicle takes a DELETE request with the corresponding vehicle id in the
 }
 ```
 
-Update vehicle takes a PUT request with the corresponding vehicle id in the url and JSON data formatted:
+- Update vehicle takes a PUT request with the corresponding vehicle id in the url and JSON data formatted:
 ```
 {
   "name": "Sebring",
@@ -213,7 +213,7 @@ Returns a preview of the updated JSON:
 }
 ```
 
-Get a vehicle takes a GET request with the corresponding vehicle id in the url and returns JSON for the single vehicle that matches the ID:
+- Get a vehicle takes a GET request with the corresponding vehicle id in the url and returns JSON for the single vehicle that matches the ID:
 ```
 {
 	"href": "/api/models/1/",
@@ -238,7 +238,7 @@ The various endpoints can be accessed according to this table
 |Update an Automobile|PUT|http://localhost:8100/api/automobiles/vin/|
 |Get an Automobile|GET|http://localhost:8100/api/automobiles/vin/|
 
-The List Automobile action takes a GET request with no input and returns JSON data containing all the created automobiles:
+- The List Automobile action takes a GET request with no input and returns JSON data containing all the created automobiles:
 ```
 {
 	"autos": [
@@ -284,7 +284,7 @@ The List Automobile action takes a GET request with no input and returns JSON da
 }
 ```
 
-Create Automobile takes a POST request with JSON body data formatted:
+- Create Automobile takes a POST request with JSON body data formatted:
 ```
 {
   "color": "red",
@@ -316,9 +316,9 @@ Returns JSON preview:
 }
 ```
 
-Delete Automobile takes a DELETE request with the automobile VIN number in the url to delete the specific automobile with that VIN.
+- Delete Automobile takes a DELETE request with the automobile VIN number in the url to delete the specific automobile with that VIN.
 
-Update an Automobile takes a PUT request with the VIN number in the url and JSON body data to update the automobile with a matching VIN number:
+- Update an Automobile takes a PUT request with the VIN number in the url and JSON body data to update the automobile with a matching VIN number:
 ```
 {
   "color": "red",
@@ -349,7 +349,7 @@ Returns updated JSON:
 }
 ```
 
-Get an automobile takes a GET request with a VIN number from the URL to get details pertaining to that specific automobile and returns JSON like so:
+- Get an automobile takes a GET request with a VIN number from the URL to get details pertaining to that specific automobile and returns JSON like so:
 ```
 {
   "href": "/api/automobiles/1C3CC5FB2AN120174/",
@@ -389,7 +389,7 @@ The various endpoints can be accessed according to this table
 |Delete a Technician|DELETE|http://localhost:8080/api/technicians/id|
 
 
-The Create Technician action takes a POST request with a JSON body in this format:
+- The Create Technician action takes a POST request with a JSON body in this format:
 ```
 {
 	"first_name": "Raggy",
@@ -414,7 +414,7 @@ Upon a successful request you should receive JSON data structured in this way:
 ```
 
 
-The List Technicians action requires no JSON input and once the GET request was properly received should return JSON data structured in this way containing a list of all created technicians:
+- The List Technicians action requires no JSON input and once the GET request was properly received should return JSON data structured in this way containing a list of all created technicians:
 ```
 {
 	"technicians": [
@@ -440,7 +440,7 @@ The List Technicians action requires no JSON input and once the GET request was 
 }
 ```
 
-The Delete Technician action takes a DELETE request with an id number corresponding to the technician ni the url. Following the previous examples a DELETE request with the URL : http://localhost:8080/api/technicians/49 will delete our employee Raggy Timbucktooth and return JSON data formatted in the following way:
+- The Delete Technician action takes a DELETE request with an id number corresponding to the technician ni the url. Following the previous examples a DELETE request with the URL : http://localhost:8080/api/technicians/49 will delete our employee Raggy Timbucktooth and return JSON data formatted in the following way:
 ```
 {
 	"deleted": true
@@ -460,7 +460,7 @@ The various endpoints can be accessed according to this table
 |Set appointment status to "finished"|PUT|http://localhost:8080/api/appointments/id/finish/|
 |Set appointment status to "canceled"|PUT|http://localhost:8080/api/appointments/id/cancel/|
 
-The List all Appointment actions takes a Get request and requires no input. Once properly received it returns a list of all appointments structured as the following:
+- The List all Appointment actions takes a Get request and requires no input. Once properly received it returns a list of all appointments structured as the following:
 ```
 {
 	"appointments": [
@@ -498,7 +498,7 @@ The List all Appointment actions takes a Get request and requires no input. Once
 }
 ```
 
-The Create an Appointment takes a POST request with a JSON body structured as:
+- The Create an Appointment takes a POST request with a JSON body structured as:
 ```
 {
 	"date_time": "2023-06-19T01:50:00.000Z",
@@ -509,8 +509,8 @@ The Create an Appointment takes a POST request with a JSON body structured as:
 }
 ```
 Some things to note:
-- date_time takes an ISO formatted datetime string.
-- technician takes a technician ID number to retrive data from created technicians.
+1. date_time takes an ISO formatted datetime string.
+2. technician takes a technician ID number to retrive data from created technicians.
 
 
 Once successfull it should return a preview of what the created appointment looks like:
@@ -532,12 +532,12 @@ Once successfull it should return a preview of what the created appointment look
 }
 ```
 Some things to note:
-- A couple fields are automatically generated.
-- Upon creation "status" is set to "Scheduled". This can be changed with "set appointment" actions.
-- Upon creation a "vip" value is generated. If the vin provided matches a vin from one of our AutomobileVO objects then "vip" is set to true. Otherwise it is false
+1. A couple fields are automatically generated.
+2. Upon creation "status" is set to "Scheduled". This can be changed with "set appointment" actions.
+3. Upon creation a "vip" value is generated. If the vin provided matches a vin from one of our AutomobileVO objects then "vip" is set to true. Otherwise it is false
 
 
-The Delete an Appointment takes a DELETE request with the id taken from the url of the corresponding appointment. Returns JSON data.
+- The Delete an Appointment takes a DELETE request with the id taken from the url of the corresponding appointment. Returns JSON data.
 ```
 {
 	"deleted": true
@@ -546,7 +546,7 @@ The Delete an Appointment takes a DELETE request with the id taken from the url 
 "deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
 
 
-The Set appointment status actions will either set the current status of an appointment to either "Finished" or "Canceled" depending on the URL. Default status is "Scheduled" upon creation.
+- The Set appointment status actions will either set the current status of an appointment to either "Finished" or "Canceled" depending on the URL. Default status is "Scheduled" upon creation.
 This action takes a PUT request to a URL that specifys both the id number of the appointment and whether it wil "finish" or "cancel" an appointment.
 Ending the request URL with /finish/ will set the status to 'finished' and the opposite for /cancel/.
 Upon success JSON data showing the updated appointment will be returned:
