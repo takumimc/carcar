@@ -46,7 +46,7 @@ def list_technicians(request, id=None):
 def list_appointments(request):
     if request.method == 'GET':
         try:
-            appointments = Appointment.objects.all()
+            appointments = Appointment.objects.all().order_by("vin")
             return JsonResponse({'appointments':appointments}, encoder=AppointmentEncoder,safe=False)
         except:
             return JsonResponse({'message': 'Error getting appointments'}, status=400)

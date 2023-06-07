@@ -21,10 +21,7 @@ function CreateTechnician() {
     }
 
     const [err, setErr] = useState('')
-    function handleErr(e){
-        const value = e.target.value
-        setErr(value)
-    }
+
 
     async function handleSubmit(e){
         e.preventDefault()

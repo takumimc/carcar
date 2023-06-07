@@ -9,6 +9,9 @@ import AutomobileList from './ListAutomobiles';
 import CreateAutomobile from './CreateAutomobile';
 import ListTechnicians from './ListTechnician';
 import CreateTechnician from './TechnicianForm';
+import CreateAppointment from './AppointmentForm';
+import ListAppointments from './ListAppointment';
+import HistoryAppointments from './AppointmentHistory';
 import SalespersonForm from './SalespersonForm';
 import SalesPeopleList from './ListSalespeople';
 import CustomerForm from './CustomerForm';
@@ -39,7 +42,9 @@ function App() {
 
           {/* Start Appointment URLS */}
           <Route path='/appointments/'>
-            {/* Appointments TBA */}
+            <Route path ='' element={<ListAppointments />}/>
+            <Route path ='new' element={<CreateAppointment/>}/>
+            <Route path ='history' element={<HistoryAppointments/>}/>
           </Route>
           {/* End Appointment URLS */}
           <Route path="manufacturers" element={<ManufacturerList />} />
