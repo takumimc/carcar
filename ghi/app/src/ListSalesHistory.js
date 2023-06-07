@@ -24,11 +24,11 @@ function SalesHistoryList(props) {
         const data = await response.json()
         const salesList = data.sales;
         const filteredSales = [];
-        if (value == "0") {
+        if (value === "0") {
             setSales(salesList);
         } else {
             for (let sale of salesList) {
-                if (sale.salesperson.id == Number(value)) {
+                if (sale.salesperson.id === Number(value)) {
                     filteredSales.push(sale);
                 }
 
