@@ -166,10 +166,8 @@ The Create an Appointment takes a POST request with a JSON body structured as:
 }
 ```
 Some things to note:
-
-date_time takes an ISO formatted datetime string.
-
-technician takes a technician ID number to retrive data from created technicians.
+- date_time takes an ISO formatted datetime string.
+- technician takes a technician ID number to retrive data from created technicians.
 
 
 Once successfull it should return a preview of what the created appointment looks like:
@@ -191,12 +189,9 @@ Once successfull it should return a preview of what the created appointment look
 }
 ```
 Some things to note:
-
-A couple fields are automatically generated.
-
-Upon creation "status" is set to "Scheduled". This can be changed with "set appointment" actions.
-
-Upon creation a "vip" value is generated. If the vin provided matches a vin from one of our AutomobileVO objects then "vip" is set to true. Otherwise it is false
+- A couple fields are automatically generated.
+- Upon creation "status" is set to "Scheduled". This can be changed with "set appointment" actions.
+- Upon creation a "vip" value is generated. If the vin provided matches a vin from one of our AutomobileVO objects then "vip" is set to true. Otherwise it is false
 
 
 The Delete an Appointment takes a DELETE request with the id taken from the url of the corresponding appointment. Returns JSON data.
