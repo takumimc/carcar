@@ -205,7 +205,7 @@ The Delete an Appointment takes a DELETE request with the id taken from the url 
 
 The Set appointment status actions will either set the current status of an appointment to either "Finished" or "Canceled" depending on the URL. Default status is "Scheduled" upon creation.
 This action takes a PUT request to a URL that specifys both the id number of the appointment and whether it wil "finish" or "cancel" an appointment.
-Ending the request URL with /finish/ will set status to 'finished' and the opposite for /cancel/.
+Ending the request URL with /finish/ will set the status to 'finished' and the opposite for /cancel/.
 Upon success JSON data showing the updated appointment will be returned:
 ```
 {
