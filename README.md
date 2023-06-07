@@ -223,7 +223,7 @@ Upon success JSON data showing the updated appointment will be returned:
 
 
 ### AutomobileVO Model
-This model contains data pertaining to a value object that is created from data being polled from the Inventory microservice every 20 seconds. The 20 second poll rate means there is a 20 second window in which an automobile is being added to the inventory and an appointment being made where the vip status will be incorrectly assigned. It should be a short enough poll that it isn't an issue, but the poll rate can be adjusted as needed in /service/api/poll/poller.py/ as needed.
+This model contains data pertaining to a value object that is created from data being polled from the Inventory microservice every 20 seconds. The 20 second poll rate means there is a 20 second window in which an automobile is being added to the inventory and an appointment being made where the vip status will be incorrectly assigned. It should be a short enough poll that it isn't an issue, but the poll rate can be adjusted as needed in /service/api/poll/poller.py/.
 
 This model contains two fields "vin" and "sold". The reason we are automatically generating objects from the Inventory is because we want to be able to assign an appointment a VIP value.
 Under the assumption that a customer that is making an appointment has already bought the vehicle means if the "vin" in one of our appointments matches a "vin" in one of our AutomobileVO objects we can assume the car has been sold and to treat that as a VIP appointment.
