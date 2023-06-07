@@ -162,7 +162,7 @@ The Create an Appointment takes a POST request with a JSON body structured as:
 	"vin": "2323323",
 	"customer": "testomer",
 	"technician": 1
-	}
+}
 ```
 Some things to note:
 date_time takes an ISO formatted datetime string
@@ -186,6 +186,10 @@ Once successfull it should return a preview of what the created appointment look
 	}
 }
 ```
+Some things to note:
+A couple fields are automatically generated.
+Upon creation "status" is set to "Scheduled". This can be changed with "set appointment" actions.
+Upon creation a "vip" value is generated. If the vin provided matches a vin from one of our AutomobileVO objects then "vip" is set to true. Otherwise it is false
 
 The Delete an Appointment takes a DELETE request with the id taken from the url of the corresponding appointment. Returns JSON data.
 ```
@@ -200,37 +204,30 @@ This action takes a PUT request to a URL that specifys both the id number of the
 Ending the request URL with /finish/ will set status to 'finished' and the opposite for /cancel/.
 Upon success JSON data showing the updated appointment will be returned:
 ```
- {
-	"id": 1,
-	"date_time": "2023-06-06T17:38:58+00:00",
-	"reason": "Testing",
+{
+	"id": 35,
+	"vip": false,
+	"date_time": "2023-06-13T06:48:00+00:00",
+	"reason": "123312",
 	"status": "Canceled",
-	"vin": "123123",
-	"customer": "testomer",
+	"vin": "`12`12",
+	"customer": "`12`12`12",
 	"technician": {
-		"first_name": "Testguy",
-		"last_name": "Testlast",
-		"employee_id": "mrcool",
-		"id": 1
+		"first_name": "fours",
+		"last_name": "foroice",
+		"employee_id": "5",
+		"id": 16
 	}
 }
 ```
 
 
 ### AutomobileVO Model
-This model contains data pertaining to an appointment and uses technician as a foreign key to the Technician model.
+This model contains data pertaining to a value object that is created from data being polled from the Inventory microservice every 20 seconds. The 20 second poll rate means there is a 20 second window in which an automobile is being added to the inventory and an appointment being made where the vip status will be incorrectly assigned. It should be a short enough poll that it isn't an issue, but the poll rate can be adjusted as needed in /service/api/poll/poller.py/ as needed.
 
-The various endpoints can be accessed according to this table
-|Action|Method|URL|
-| ----------- | ----------- | ----------- |
-|List Technicians|GET|http://localhost:8080/api/technicians/|
-|Create Technician|POST|http://localhost:8080/api/technicians/|
-|Delete a Technician|DELETE|http://localhost:8080/api/technicians/id|
+This model contains two fields "vin" and "sold". The reason we are automatically generating objects from the Inventory is because we want to be able to assign an appointment a VIP value.
+Under the assumption that a customer that is making an appointment has already bought the vehicle means if the "vin" in one of our appointments matches a "vin" in one of our AutomobileVO objects we can assume the car has been sold and to treat that as a VIP appointment.
 
-
-
-Explain your models and integration with the inventory
-microservice, here.
 
 ## Sales microservice
 
