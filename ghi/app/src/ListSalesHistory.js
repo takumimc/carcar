@@ -15,6 +15,15 @@ function SalesHistoryList(props) {
         }
     }
 
+    const fetchSales = async () => {
+        const url = 'http://localhost:8090/api/sales/'
+        const response = await fetch(url)
+        if (response.ok) {
+            const data = await response.json()
+            setSales(data.sales)
+        }
+    }
+
     async function handleSalespersonChange(e) {
         const value = e.target.value;
         setSalesperson(value);
@@ -39,6 +48,7 @@ function SalesHistoryList(props) {
 
     useEffect(() => {
         fetchSalespeople();
+        fetchSales();
     }, [])
 
     return (
