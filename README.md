@@ -10,7 +10,7 @@ Team:
 1.Fork this repository and clone into desired local directory using command below
 ```
 git clone -repository https clone link here-
-
+```
 2.Run the following commands in the clone repository to build and run using Docker.
 Note: React container can take a while to properly run. Typically takes a few minutes
 
@@ -23,6 +23,7 @@ docker-compose up
 3.Once everything is built and running CarCar app can be viewed at http://localhost:3000/
 
 ![Img](/images/test.png)
+
 ## Design
 
 ## Inventory microservice
