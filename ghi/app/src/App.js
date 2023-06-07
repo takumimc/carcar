@@ -48,7 +48,7 @@ function App() {
             <Route path ='history' element={<HistoryAppointments/>}/>
           </Route>
           {/* End Appointment URLS */}
-          <Route path="manufacturers" element={<ManufacturerList />} />
+          <Route path='manufacturers' element={<ManufacturerList />} />
           <Route path="manufacturers/create" element={<ManufacturerForm />} />
           <Route path="automobiles" element={<AutomobileList />} />
           <Route path="automobiles/new" element={<CreateAutomobile />} />
