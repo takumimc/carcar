@@ -659,7 +659,7 @@ JSON body to send data:
 	"deleted": true
 }
 ```
-"deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
+- "deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
 
 ### Customer Model
 This model creates data for a customer that has their first name, last name, address, and a phone number.
@@ -722,7 +722,7 @@ JSON body to send data:
 	"deleted": true
 }
 ```
-"deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
+- "deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
 
 ### AutomobileVO Model
 This model creates a value object from the data being polled from the Inventory microservice using a poller that polls data from that Inventory every 60 seconds. The model contains two fields, VIN, sold information, and import_href. This data is needed when we are creating sales in our next model.
@@ -759,12 +759,42 @@ JSON body to send data:
 	"message": "No automobile exists"
 }
 ```
+```
 {
 	"message": "No salesperson exists"
 }
 ```
+```
 {
 	"message": "No customer exists"
+}
+```
+- Upon a successful request, you should receive JSON data similar to shown below:
+```
+{
+	"sales": {
+		"automobile": {
+			"import_href": "/api/automobiles/7146791672/",
+			"vin": "7146791672",
+			"sold": false,
+			"id": 1
+		},
+		"salesperson": {
+			"first_name": "Kevin",
+			"last_name": "Nguyen",
+			"employee_id": 71467916,
+			"id": 1
+		},
+		"customer": {
+			"first_name": "Kevin",
+			"last_name": "Nguyen",
+			"address": "488 Fake Address St, Fountain Valley, CA, 92647",
+			"phone_number": "7146791672",
+			"id": 1
+		},
+		"price": 40000,
+		"id": (unique_id)
+	}
 }
 ```
 
@@ -805,4 +835,4 @@ JSON body to send data:
 	"deleted": true
 }
 ```
-"deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
+- "deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
