@@ -30,15 +30,96 @@ docker-compose up
 
 This portion of the app manages the manufacturers,automobiles, and vehicle models in our inventory.
 
+### Manufacturer Model
+The various endpoints can be accessed according to this table
+|Action|Method|URL|
+| ----------- | ----------- | ----------- |
+|List Manufacturer|GET|http://localhost:8100/api/manufacturers/|
+|Create Manufacturer|POST|	http://localhost:8100/api/manufacturers/|
+|Delete a Manufacturer|DELETE|http://localhost:8100/api/manufacturers/id/|
+|Update a Manufacturer|PUT|http://localhost:8100/api/manufacturers/id/|
+|Get a Manufacturer|POST|http://localhost:8100/api/manufacturers/id/|
+
+The List Manufacturer takes a GET request and returns JSON data for all the created manufacturers:
+```
+{
+	"manufacturers": [
+		{
+			"href": "/api/manufacturers/1/",
+			"id": 1,
+			"name": "Test manfu"
+		},
+		{
+			"href": "/api/manufacturers/2/",
+			"id": 2,
+			"name": "manufact"
+		},
+		{
+			"href": "/api/manufacturers/3/",
+			"id": 3,
+			"name": "adsfasfdsadf"
+		}
+	]
+}
+```
+
+The Create Manufacturer action takes a POST request with JSON body like so:
+```
+{
+  "name": "Chrysler"
+}
+```
+Upon creation it returns a preview of the JSON data:
+```
+{
+  "href": "/api/manufacturers/1/",
+  "id": 1,
+  "name": "Chrysler"
+}
+```
+
+The Delete Manufacturer action takes a DELETE request and id from the URL to delete the matching manufacturer. Returns JSON data upon deletion:
+```
+{
+	"id": null,
+	"name": "Test manfu"
+}
+```
+
+The Update a Manufacturer action takes a PUT request and id from the URL as well as JSON body data to update the information of the matching manufacturer:
+```
+{
+  "name": "Christler"
+}
+```
+Returns updated JSON data preview:
+```
+{
+  "href": "/api/manufacturers/1/",
+  "id": 1,
+  "name": "Christler"
+}
+```
+
+The Get a Manufacturer action  takes a POST request and id from the URL to get the JSON data for the matching manufacturer:
+```
+{
+	"href": "/api/manufacturers/1/",
+	"id": 1,
+	"name": "Test manfu"
+}
+```
+
+
 ### Vehicle Model
 The various endpoints can be accessed according to this table
 |Action|Method|URL|
 | ----------- | ----------- | ----------- |
 |List Vehicle models|GET|http://localhost:8100/api/models/|
 |Create Vehicle model|POST|	http://localhost:8100/api/models/|
-|Delete a Vehicle model|DELETE|http://localhost:8100/api/models/:id/|
-|Update a Vehicle model|PUT|http://localhost:8100/api/models/:id/|
-|Get a Vehicle model|POST|http://localhost:8100/api/models/:id/|
+|Delete a Vehicle model|DELETE|http://localhost:8100/api/models/id/|
+|Update a Vehicle model|PUT|http://localhost:8100/api/models/id/|
+|Get a Vehicle model|POST|http://localhost:8100/api/models/id/|
 
 List Vehicle action takes a GET request with no input and returns JSON data for all the vehicles formatted this way:
 ```
@@ -147,6 +228,149 @@ Get a vehicle takes a GET request with the corresponding vehicle id in the url a
 }
 ```
 
+### Automobile Model
+The various endpoints can be accessed according to this table
+|Action|Method|URL|
+| ----------- | ----------- | ----------- |
+|List Automobiles|GET|http://localhost:8100/api/automobiles//|
+|Create Automobile|POST|http://localhost:8100/api/automobiles/|
+|Delete an Automobile|DELETE|http://localhost:8100/api/automobiles/vin/|
+|Update an Automobile|PUT|http://localhost:8100/api/automobiles/vin/|
+|Get an Automobile|GET|http://localhost:8100/api/automobiles/vin/|
+
+The List Automobile action takes a GET request with no input and returns JSON data containing all the created automobiles:
+```
+{
+	"autos": [
+		{
+			"href": "/api/automobiles/123123/",
+			"id": 1,
+			"color": "Red",
+			"year": 1990,
+			"vin": "123123",
+			"model": {
+				"href": "/api/models/2/",
+				"id": 2,
+				"name": "Sebring",
+				"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+				"manufacturer": {
+					"href": "/api/manufacturers/1/",
+					"id": 1,
+					"name": "Test manfu"
+				}
+			},
+			"sold": false
+		},
+            		{
+			"href": "/api/automobiles/2321C5FB2AN120174/",
+			"id": 7,
+			"color": "red",
+			"year": 2012,
+			"vin": "2321C5FB2AN120174",
+			"model": {
+				"href": "/api/models/2/",
+				"id": 2,
+				"name": "Sebring",
+				"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+				"manufacturer": {
+					"href": "/api/manufacturers/1/",
+					"id": 1,
+					"name": "Test manfu"
+				}
+			},
+			"sold": false
+		}
+	]
+}
+```
+
+Create Automobile takes a POST request with JSON body data formatted:
+```
+{
+  "color": "red",
+  "year": 2012,
+  "vin": "2321C5FB2AN120174",
+  "model_id": 2
+}
+```
+Returns JSON preview:
+```
+{
+	"href": "/api/automobiles/2321C5FB2AN120174/",
+	"id": 7,
+	"color": "red",
+	"year": 2012,
+	"vin": "2321C5FB2AN120174",
+	"model": {
+		"href": "/api/models/2/",
+		"id": 2,
+		"name": "Sebring",
+		"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+		"manufacturer": {
+			"href": "/api/manufacturers/1/",
+			"id": 1,
+			"name": "Test manfu"
+		}
+	},
+	"sold": false
+}
+```
+
+Delete Automobile takes a DELETE request with the automobile VIN number in the url to delete the specific automobile with that VIN.
+
+Update an Automobile takes a PUT request with the VIN number in the url and JSON body data to update the automobile with a matching VIN number:
+```
+{
+  "color": "red",
+  "year": 2012,
+  "sold": true
+}
+```
+Returns updated JSON:
+```
+{
+	"href": "/api/automobiles/232323/",
+	"id": 6,
+	"color": "red",
+	"year": 2012,
+	"vin": "232323",
+	"model": {
+		"href": "/api/models/5/",
+		"id": 5,
+		"name": "Test create",
+		"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+		"manufacturer": {
+			"href": "/api/manufacturers/1/",
+			"id": 1,
+			"name": "Test manfu"
+		}
+	},
+	"sold": true
+}
+```
+
+Get an automobile takes a GET request with a VIN number from the URL to get details pertaining to that specific automobile and returns JSON like so:
+```
+{
+  "href": "/api/automobiles/1C3CC5FB2AN120174/",
+  "id": 1,
+  "color": "yellow",
+  "year": 2013,
+  "vin": "1C3CC5FB2AN120174",
+  "model": {
+    "href": "/api/models/1/",
+    "id": 1,
+    "name": "Sebring",
+    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+    "manufacturer": {
+      "href": "/api/manufacturers/1/",
+      "id": 1,
+      "name": "Daimler-Chrysler"
+    }
+  },
+  "sold": false
+}
+```
 
 ## Service microservice
 
