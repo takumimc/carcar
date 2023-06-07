@@ -103,6 +103,8 @@ The Delete Technician action takes a DELETE request with an id number correspond
 ```
 "deleted": true was return signaling a successful deletion. "deleted":false will return if nothing was deleted
 
+###Appointments Model
+This model contains data pertaining to an appointment and uses technician as a foreign key to the Technician model.
 
 
 
