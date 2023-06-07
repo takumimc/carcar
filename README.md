@@ -662,6 +662,67 @@ JSON body to send data:
 "deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
 
 ### Customer Model
+This model creates data for a customer that has their first name, last name, address, and a phone number.
+
+The various endpoints can be accessed through Insomnia and/or your browser:
+
+| Action | Method | URL
+| ----------- | ----------- | -----------
+| List customers | GET | http://localhost:8090/api/customers/
+| Create customer | POST | http://localhost:8090/api/customers/
+| Delete a specific customer | DELETE | http://localhost:8090/api/customers/id/
+
+JSON body to send data:
+
+- Create a customer takes a POST request with JSON body in this format:
+```
+{
+	"first_name": "Tom",
+	"last_name": "Brady",
+	"address": "1 Patriot Pl, Foxborough, MA 02035",
+	"phone_number": 5085438200
+}
+```
+- Upon a successful request, you should receive JSON data similar to shown below:
+```
+{
+	"first_name": "Tom",
+	"last_name": "Brady",
+	"address": "1 Patriot Pl, Foxborough, MA 02035",
+	"phone_number": 5085438200,
+	"id": (unique_id)
+}
+```
+
+- Listing customers will require a GET request but does not need JSON input. If the GET request is received, a list of all the created customers will appear in the format shown below:
+```
+{
+	"customers": [
+		{
+			"first_name": "Kevin",
+			"last_name": "Nguyen",
+			"address": "488 Fake Address St, Fountain Valley, CA, 92647",
+			"phone_number": "7146791672",
+			"id": 1
+		},
+		{
+			"first_name": "Tom",
+			"last_name": "Brady",
+			"address": "1 Patriot Pl, Foxborough, MA 02035",
+			"phone_number": "5085438200",
+			"id": 3
+		}
+	]
+}
+```
+
+- The DELETE customer request requires the unique id assigned to the customer. If you take the DELETE request url http://localhost:8090/api/salespeople/id/ and replace id with the id of the customer you want deleted and send the request, there will be a JSON response that indicates a boolean value whether or not the DELETE request was successful. The response will be shown like this:
+```
+{
+	"deleted": true
+}
+```
+"deleted": true was returned signaling a successful deletion. "deleted":false will return if nothing was deleted
 
 ### AutomobileVO Model
 
