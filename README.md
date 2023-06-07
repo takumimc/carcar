@@ -2,8 +2,9 @@
 
 Team:
 
-* Ian McIntyre - Automobile Service
-* Person 2 - Which microservice?
+* **Ian McIntyre** - Automobile Service
+* **Kevin Nguyen** - Automobile Sales
+
 ## How to Run this App
 ### Requires Docker,Git, and Node.js
 
@@ -22,9 +23,13 @@ docker-compose up
 
 3.Once everything is built and running CarCar app can be viewed at http://localhost:3000/
 
-![Img](/images/test.png)
+![Img](/images/CarCarWebsite.png)
 
 ## Design
+
+The app is made of 3 different microservices that interact with one another and then is rendered and displayed through React.
+
+![Img](/images/CarCar_App_Diagram.png)
 
 ## Inventory microservice
 
@@ -111,5 +116,7 @@ microservice, here.
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+This microservice is designed to create and manage sales through creating and displaying customers, salespeople and sales of different automobiles.
+To access the inventory of automobiles, the service polls data from the Inventory microservice using a poller to grab automobiles from the inventory and create an AutomobileVO within our microservice.
+
+The various API endpoints and models are listed below:
