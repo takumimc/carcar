@@ -24,26 +24,28 @@ function SalesHistoryList(props) {
         const data = await response.json()
         const salesList = data.sales;
         const filteredSales = [];
-        for (let sale of salesList) {
-            if (sale.salesperson.id == Number(value)) {
-                filteredSales.push(sale)
+        if (value == "0") {
+            setSales(salesList);
+        } else {
+            for (let sale of salesList) {
+                if (sale.salesperson.id == Number(value)) {
+                    filteredSales.push(sale);
+                }
+
             }
+            setSales(filteredSales);
         }
-        setSales(filteredSales)
     }
 
     useEffect(() => {
         fetchSalespeople();
-        // fetchSalesHistory();
     }, [])
-
-    console.log()
 
     return (
         <div className="container mt-4">
             <h1>Salesperson History</h1>
             <select value={salesperson} onChange={handleSalespersonChange} name="salesperson" id="salesperson" className="form-select">
-                <option value="">Filter: Salesperson</option>
+                <option value="0">Filter: Salesperson</option>
                 {salespeople.map(salesperson => {
                     return (
                         <option key={salesperson.id} value={salesperson.id} id="">
