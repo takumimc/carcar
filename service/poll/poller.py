@@ -25,16 +25,10 @@ def poll(repeat=True):
             # print('request success')
             # print(automobiles)
             for automobile in automobiles['autos']:
-                try:
                     AutomobileVO.objects.update_or_create(
                         vin=automobile['vin'],
-                        sold=automobile['sold'],
+                        defaults={'sold': automobile['sold']}
                     )
-                except IntegrityError as e:
-                    if 'unique constraint' in e.args[0]:
-                        auto = AutomobileVO.objects.get(vin=automobile['vin'])
-                        auto.sold=automobile['sold']
-                        auto.save()
         except Exception as e:
             print(e, file=sys.stderr)
 
