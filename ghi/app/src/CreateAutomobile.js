@@ -95,7 +95,7 @@ function CreateAutomobile(){
                 </div>
                 <div>
                     <label htmlFor='model'>Model:</label>
-                    <select value={model} onChange={handleModel} name='model' id='model' className='form-select'>
+                    <select value={model} onChange={handleModel} required name='model' id='model' className='form-select'>
                         <option value=''>Choose a model</option>
                         {models.map( model =>{
                             return (
