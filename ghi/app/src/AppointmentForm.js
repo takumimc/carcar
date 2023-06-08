@@ -106,7 +106,7 @@ function CreateAppointment(){
                 </div>
                 <div>
                     <label htmlFor='tech'>Technician:</label>
-                    <select  value={tech} onChange={handleTech} name='tech' id='tech' className='form-select'>
+                    <select  value={tech} onChange={handleTech} required name='tech' id='tech' className='form-select'>
                         <option value=''>Select a technician</option>
                         {techs.map(tech => {
                             return <option key={tech.id} value={tech.id}>{tech.first_name} {tech.last_name}</option>
