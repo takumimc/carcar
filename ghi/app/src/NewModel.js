@@ -82,7 +82,7 @@ function CreateModel() {
                 </div>
                 <div>
                     <label htmlFor='manufacturer'>Manufacturer:</label>
-                    <select value={manu} onChange={handleManu} name='manufacturer' id='manufacturer' className='form-select'>
+                    <select value={manu} onChange={handleManu} required name='manufacturer' id='manufacturer' className='form-select'>
                         <option value=''>Choose a manufacturer</option>
                         {manus.map( manu =>{
                             return (
