@@ -612,6 +612,7 @@ JSON body to send data:
 }
 ```
 - Upon a successful request, you should receive JSON data similar to shown below:
+	- In the front end, if the response is successful the page will redirect to the list of salespeople
 ```
 {
 	"first_name": "Tom",
@@ -684,6 +685,7 @@ JSON body to send data:
 }
 ```
 - Upon a successful request, you should receive JSON data similar to shown below:
+	- In the front end, if the response is successful the page will redirect to the list of customers
 ```
 {
 	"first_name": "Tom",
@@ -743,17 +745,19 @@ The various endpoints can be accessed through Insomnia and/or your browser:
 JSON body to send data:
 
 - Create a sale takes a POST request with JSON body in this format:
-	- The value for automobile, salesperson and customer require their unique id to assign
+	- the value for automobile needs to be the specific VIN of the automobile in string format
+	- The value for salesperson and customer require their unique id to assign
 	- The price must be an integer and not a float
 ```
 {
-	"automobile": 1,
+	"automobile": "{automobile_vin}",
 	"salesperson": 1,
 	"customer": 1,
 	"price": 40000
 }
 ```
 - If the value of automobile, salesperson, or customer does not exist, a JSON response will display:
+	- In the front end, if the response is successful the page will redirect to the list of sales
 ```
 {
 	"message": "No automobile exists"
