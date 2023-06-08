@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Sale
+from .models import Sale, AutomobileVO
 
 # Register your models here.
 @admin.register(Sale)

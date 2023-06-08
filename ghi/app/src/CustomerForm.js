@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CustomerForm(props) {
     const [firstName, setFirstName] = useState('');
@@ -26,6 +27,8 @@ function CustomerForm(props) {
         setPhoneNumber(value);
     }
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -50,6 +53,7 @@ function CustomerForm(props) {
             setLastName('');
             setAddress('');
             setPhoneNumber('');
+            navigate('/customers');
         }
     }
 

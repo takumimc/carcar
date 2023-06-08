@@ -70,8 +70,8 @@ def api_sales(request):
     else: #POST
         content = json.loads(request.body)
         try:
-            automobile_id = content['automobile']
-            automobile = AutomobileVO.objects.get(id=automobile_id)
+            automobile_vin = content['automobile']
+            automobile = AutomobileVO.objects.get(vin=automobile_vin)
             content['automobile'] = automobile
         except AutomobileVO.DoesNotExist:
             return JsonResponse(

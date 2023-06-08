@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SalespersonForm(props) {
     const [firstName, setFirstName] = useState('');
@@ -19,6 +20,8 @@ function SalespersonForm(props) {
         const value = e.target.value;
         setEmployeeId(value);
     }
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -43,6 +46,7 @@ function SalespersonForm(props) {
             setFirstName('');
             setLastName('');
             setEmployeeId('');
+            navigate("/salespeople")
         }
     }
 

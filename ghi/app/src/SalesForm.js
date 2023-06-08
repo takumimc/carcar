@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SalesForm(props) {
     const [automobiles, setAutomobiles] = useState([]);
@@ -8,14 +9,10 @@ function SalesForm(props) {
     const [salesperson, setSalesperson] = useState('');
     const [customer, setCustomer] = useState('');
     const [price, setPrice] = useState('');
-    const [autoVin, setAutoVin] = useState('');
 
     const handleAutomobileChange = (e) => {
         const value = e.target.value;
-        const id = e.target.id;
-        console.log(e.target.option)
         setAutomobile(value);
-        setAutoVin(id);
     }
 
     const handleSalespersonChange = (e) => {
@@ -32,6 +29,8 @@ function SalesForm(props) {
         const value = e.target.value;
         setPrice(value);
     }
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -57,10 +56,11 @@ function SalesForm(props) {
             setCustomer('');
             setSalesperson('');
             setPrice('');
+            navigate('/sales');
         }
 
         try {
-            const automobileUrl = `http://localhost:8100/api/automobiles/${autoVin}/`;
+            const automobileUrl = `http://localhost:8100/api/automobiles/${automobile}/`;
             const updateConfig = {
                 method: "put",
                 body: JSON.stringify({"sold": true}),
@@ -68,10 +68,7 @@ function SalesForm(props) {
                     'Content-Type': 'application/json'
                 }
             };
-            const response = await fetch(automobileUrl, updateConfig);
-            if (response.ok) {
-                console.log("auto has been sold");
-            }
+            await fetch(automobileUrl, updateConfig);
         } catch (e) {
             console.log(e);
         }
@@ -125,7 +122,7 @@ function SalesForm(props) {
                                 <option value="">Choose an automobile VIN</option>
                                 {automobiles.filter(autos => autos.sold === false).map(auto => {
                                     return (
-                                        <option key={auto.id} value={auto.id}>
+                                        <option key={auto.id} value={auto.vin}>
                                             {auto.vin}
                                         </option>
                                     )
