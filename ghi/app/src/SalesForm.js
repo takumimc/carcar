@@ -8,10 +8,14 @@ function SalesForm(props) {
     const [salesperson, setSalesperson] = useState('');
     const [customer, setCustomer] = useState('');
     const [price, setPrice] = useState('');
+    const [autoVin, setAutoVin] = useState('');
 
     const handleAutomobileChange = (e) => {
         const value = e.target.value;
+        const id = e.target.id;
+        console.log(e.target.option)
         setAutomobile(value);
+        setAutoVin(id);
     }
 
     const handleSalespersonChange = (e) => {
@@ -46,12 +50,30 @@ function SalesForm(props) {
                 'Content-Type': 'application/json'
             }
         }
+
         const response = await fetch(saleUrl, fetchConfig);
         if (response.ok) {
             setAutomobile('');
             setCustomer('');
             setSalesperson('');
             setPrice('');
+        }
+
+        try {
+            const automobileUrl = `http://localhost:8100/api/automobiles/${autoVin}/`;
+            const updateConfig = {
+                method: "put",
+                body: JSON.stringify({"sold": true}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            const response = await fetch(automobileUrl, updateConfig);
+            if (response.ok) {
+                console.log("auto has been sold");
+            }
+        } catch (e) {
+            console.log(e);
         }
     }
 
