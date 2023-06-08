@@ -5,3 +5,6 @@ from .models import Sale, AutomobileVO
 @admin.register(Sale)
 class SaleAdmin(admin.ModelAdmin):
     pass
+
+
+admin.site.register(AutomobileVO)
